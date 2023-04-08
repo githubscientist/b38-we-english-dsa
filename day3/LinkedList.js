@@ -47,12 +47,8 @@ class LinkedList {
 
     pop() {
         if (this.head == null) {
-            // list is empty
-            // do nothing
             console.log('list is empty!');
         } else if (this.head.next == null) {
-            // list has only one element
-            // remove that compartment
             this.head = null;
         } else {
             let thead = this.head;
@@ -60,8 +56,6 @@ class LinkedList {
             while (thead.next.next != null) {
                 thead = thead.next;
             }
-
-            // now the thead is pointing to the node previous to the tail node
             thead.next = null;
         }
     }
@@ -73,32 +67,6 @@ class LinkedList {
     }
 }
 
-/*
-    thead != null
-        after the loop breaks: thead = null [thead is standing on the null]
-    
-    thead.next !=null
-        after the loop breaks: thead.next = null [thead is standing on the tail node]
-    
-    thead.next.next != null
-        after the loop breaks: thead.next.next = null [thead is standing on the previous node of tail node]
-
-
-    while x != 10
-        after the loop breaks: x = 10
-*/
-
-// let newNode = new Node(5, 'sathish');
-// let newNode1 = new Node(6, 'krish');
-
-// console.log(newNode, newNode1);
-
-// let node1 = new Node(5);
-// let node2 = new Node(6);
-
-// node1.next = node2;
-
-// console.log(node1);
 
 let list = new LinkedList();
 
@@ -106,45 +74,5 @@ list.push(4);
 list.push(5);
 list.push(6);
 
-// list.toString();
 
-// list.pop();
-
-// list.toString();
-
-// list.pop();
-
-// list.toString();
-
-// list.pop();
-
-// list.toString();
-
-// list.pop();
-
-/*
-    list.head = LinkedList {
-        head: Node {
-            data: 4,
-            next: Node {
-                data: 5, 
-                next: Node {
-                    data: 6,
-                    next: null
-                }
-            }
-        }
-    }
-*/
-
-// let array = [];
-
-// array.push(4);
-// array.push(5);
-// array.push(7);
-
-// console.log(array);
-
-// array.pop();
-
-// console.log(array);
+console.log(list.length());
