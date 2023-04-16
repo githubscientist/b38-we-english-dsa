@@ -11,6 +11,7 @@ class LinkedList {
     }
 
     // insertAtTail
+    // pushes the data to the end of the list
     push(data) {
         let newNode = new Node(data);
         if (this.head == null) {
@@ -35,6 +36,7 @@ class LinkedList {
     }
 
     // deleteAtTail
+    // removes the data from the end of the list
     pop() {
         if (this.head == null) {
             console.log('list is empty!');
@@ -49,6 +51,7 @@ class LinkedList {
         }
     }
 
+    // the number of nodes in the linked list
     length() {
         let thead = this.head;
         let nodes = 0;
@@ -59,6 +62,7 @@ class LinkedList {
         return nodes;
     }
 
+    // inserts the data into the beginning of the list
     unshift(data) {
         let newNode = new Node(data);
         if (this.head == null) {
@@ -69,6 +73,7 @@ class LinkedList {
         }
     }
 
+    // removes the data from the beginning of the list
     shift() {
         if (this.head == null) {
             console.log('list is empty!');
@@ -82,9 +87,36 @@ class LinkedList {
         
     }
 
-    middleNode() {
-        // return the middle node data of the linked list
+    // middleNode() {
+    //     // return the middle node data of the linked list
+    //     // we need to find the length of the linked list
+    //     let length = this.length();
 
+    //     length = Math.ceil(length / 2);
+        
+    //     // find the middle node
+    //     let thead = this.head;
+    //     length--;
+
+    //     while (length > 0) {
+    //         thead = thead.next;
+    //         length--;
+    //     }
+
+    //     return thead.data;
+    // }
+
+    middleNode() {
+        // slow and fast pointers
+        let slow = this.head;
+        let fast = this.head;
+
+        while (fast!=null && fast.next!=null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow.data;
     }
 }
 
@@ -92,16 +124,20 @@ class LinkedList {
 let list = new LinkedList();
 
 list.push(4);
-list.push(5);
 list.push(6);
-list.push(55);
-list.unshift(11);
-list.unshift(10);
-list.push(7);
-list.pop();
-list.shift();
-list.shift();
-list.pop();
+list.push(10);
 
-// console.log(list.length());
+list.unshift(3);
+list.unshift(1);
+
+list.pop();
+list.push(7);
+
+list.shift();
+list.unshift(2);
+// list.push(8);
+// list.push(9);
+
 list.toString();
+
+console.log(list.middleNode());
